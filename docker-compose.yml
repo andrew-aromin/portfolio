@@ -1,0 +1,8 @@
+services:
+  app:
+    build: .
+    container_name: welcome
+    ports:
+      - "3005:3005"
+    networks:
+      - lan

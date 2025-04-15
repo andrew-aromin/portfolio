@@ -14,10 +14,8 @@
   "dependencies": {
     "axios": "^1.8.4",
     "browserless": "^10.7.9",
-    "cors": "^2.8.5",
     "express": "^5.1.0",
     "express-rate-limit": "^7.5.0",
-    "helmet": "^8.1.0",
     "html-get": "^2.21.3",
     "metascraper": "^5.46.11",
     "metascraper-clearbit": "^5.46.11",
