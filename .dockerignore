@@ -1,0 +1,29 @@
+# Ignore node_modules (you'll likely install dependencies inside the container)
+node_modules/
+
+# Ignore log files
+*.log
+
+# Ignore build directories (e.g., dist, build)
+dist/
+build/
+
+# Ignore local environment files
+.env
+.env*
+
+# Ignore Vite development files
+.vite/
+
+# Ignore Dockerfile itself and any related scripts
+Dockerfile
+*.sh
+
+# Ignore IDE/Editor settings (e.g., VSCode)
+.vscode/
+.idea/
+
+# Ignore other unnecessary files (e.g., temporary files)
+*.swp
+*.bak
+*.tmp
