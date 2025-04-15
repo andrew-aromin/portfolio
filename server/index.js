@@ -2,12 +2,15 @@ import express from 'express';
 import rateLimit from 'express-rate-limit';
 import morgan from 'morgan';
 import path from 'path';
-import { findLogos } from './get.js';
+import { downloadLogo } from './get.js';
 
 const app = express();
 const port = 3005;
 
 const isDev = process.env.NODE_ENV === 'dev';
+
+console.log(isDev);
+
 const distPath = path.resolve('dist');
 
 const limiter = rateLimit({
@@ -28,16 +31,16 @@ if(!isDev) {
 
 app.get('/api/getLogo', async (req, res) => {
   try {
-    const result = await findLogos(req.query.q);
+    const result = await downloadLogo(req.query.q);
     return res.send(result);
   }catch(e) {
     console.error(e);
-    res.send(500);
+    res.send(e);
   }
 });
 
 if(!isDev) {
-  app.use((req, res, next) => {
+  app.use((req, res) => {
     res.sendFile(path.join(distPath, 'index.html'));
   });
 }

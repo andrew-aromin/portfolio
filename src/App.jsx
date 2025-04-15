@@ -1,6 +1,6 @@
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { cleanAndValidate } from '../helpers';
+import { cleanAndValidate, blobToBase64 } from '../helpers';
 import axios from 'axios';
 import './App.css'
 
@@ -10,7 +10,6 @@ function App() {
   
   useEffect(() => {
     if (!UNSANITZED_COMPANY_NAME) return;
-
     // ensure it's a valid and sanitzied url
     const cleanedName = cleanAndValidate(UNSANITZED_COMPANY_NAME);
 
@@ -19,8 +18,8 @@ function App() {
     // check the cache to prevent repeated API calls
     const cachedLogo = localStorage.getItem(cleanedName);
 
-    if (cachedLogo) {
-      // If logo is in localStorage, use it
+     if (cachedLogo) {
+       // If logo is in localStorage, use it
       setImg(cachedLogo);
       return;
     }
@@ -30,12 +29,15 @@ function App() {
         const { data } = await axios.get("/api/getLogo", {
           params: {
             q: cleanedName
-          }
+          },
+          responseType: 'blob'
         });
 
-        if(data?.logo) {
-          localStorage.setItem(cleanedName, data.logo);
-          setImg(data.logo);
+        if(data) {
+          // convert the blob so we can also store it in local cache
+          const base64 = await blobToBase64(data);
+          localStorage.setItem(cleanedName, base64);
+          setImg(base64);
         }
 
       }catch(e) {
@@ -47,14 +49,14 @@ function App() {
 
   return (
     <>
-      <h1>Welcome, to my Full Stack React App!</h1>
+      <h1>Welcome, to my full stack app!</h1>
       <div className="card">
       {image ? (
         <img src={image} alt="Logo" onError={() => setImg(null)} />
       ) : (
         <span style={{ fontSize: '5rem' }}>👋</span>
       )}
-        <p>My name is Andrew Aromin and I'm a Senior Full Stack Software Engineer</p>
+        <p>I'm Andrew Aromin and I'm a Senior Full Stack Software Engineer</p>
         <p>
            I built this app using ReactJS, NodeJS, and Docker
         </p>

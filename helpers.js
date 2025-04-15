@@ -10,3 +10,12 @@ export function cleanAndValidate(input) {
 
   return isValid ? sanitized : null;
 }
+
+export async function blobToBase64(blob) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onloadend = () => resolve(reader.result); // returns data URL
+    reader.onerror = reject;
+    reader.readAsDataURL(blob);
+  });
+};
