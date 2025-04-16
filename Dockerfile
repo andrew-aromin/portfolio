@@ -1,21 +1,18 @@
-FROM node:20
-
-# add a nonroot user
-RUN useradd -m temp
-
-# switch to non root user
-USER temp
+FROM node:20-alpine
 
 # Set working directory
 WORKDIR /app
 
-COPY --chown=temp:temp package*.json ./
+COPY --chown=node:node package*.json ./
 
 RUN npm install --omit-dev
 
-COPY --chown=temp:temp . .
+COPY --chown=node:node . .
 
 RUN npm run build
+
+# switch to non root user
+USER node
 
 # Expose backend port
 EXPOSE 3005
