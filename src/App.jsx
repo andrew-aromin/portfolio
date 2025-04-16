@@ -49,20 +49,22 @@ function App() {
 
   return (
     <>
-      <h1>Welcome, to my full stack app!</h1>
+      <h1>Welcome to my full stack app!</h1>
       <div className="card">
       {image ? (
         <img src={image} alt="Logo" onError={() => setImg(null)} />
       ) : (
-        <span style={{ fontSize: '5rem' }}>👋</span>
+        <span style={{ fontSize: '5.5rem' }}>👋</span>
       )}
-        <p>I'm Andrew Aromin and I'm a Senior Full Stack Software Engineer</p>
-        <p>
-           I built this app using ReactJS, NodeJS, and Docker
-        </p>
-        <p>Checkout my <a href="https://www.linkedin.com/in/andrew-aromin" target="_blank" rel="noopener noreferrer">
-          Linkedin</a>
-        </p>
+        <div className='card'>
+          <p>I'm Andrew Aromin and I'm a Senior Full Stack Software Engineer</p>
+          <p>
+            I built this app using ReactJS, NodeJS, and Docker
+          </p>
+          <p>Check out my <a href="https://www.linkedin.com/in/andrew-aromin" target="_blank" rel="noopener noreferrer">
+            Linkedin</a>
+          </p>
+        </div>
       </div>
     </>
   )
