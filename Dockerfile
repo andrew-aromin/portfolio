@@ -1,4 +1,4 @@
-FROM node:20-alpine
+FROM node:20
 
 # add a nonroot user
 RUN useradd -m temp
