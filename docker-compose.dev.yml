@@ -1,0 +1,8 @@
+services:
+  app-dev:
+    build: .
+    container_name: welcome-dev
+    ports:
+      - "3007:3007"
+    networks:
+      - lan

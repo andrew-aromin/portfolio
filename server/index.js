@@ -4,8 +4,8 @@ import morgan from 'morgan';
 import path from 'path';
 import { downloadLogo } from './get.js';
 
+const PORT = parseInt(process.env.PORT) || 3007
 const app = express();
-const port = 3005;
 
 const isDev = process.env.NODE_ENV === 'dev';
 
@@ -46,6 +46,6 @@ if(!isDev) {
 }
 
 // Start the server
-app.listen(port, () => {
-  console.log(`Server is running at ${port}`);
+app.listen(PORT, () => {
+  console.log(`Server is running at ${PORT}`);
 });

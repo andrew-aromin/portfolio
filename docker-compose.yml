@@ -6,3 +6,5 @@ services:
       - "3005:3005"
     networks:
       - lan
+    environment:
+      - PORT=3005

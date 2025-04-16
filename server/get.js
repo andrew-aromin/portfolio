@@ -2,6 +2,13 @@ import axios from 'axios';
 import { cleanAndValidate } from '../helpers.js';
 
 export async function downloadLogo(domain) {
+
+  const cleanedDomain = cleanAndValidate(domain);
+
+  if(!cleanedDomain) {
+    return Promise.reject("Error: invalid domain");
+  }
+
   const clearbitUrl = `https://logo.clearbit.com/${domain}`;
 
   try {

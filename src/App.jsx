@@ -62,7 +62,8 @@ function App() {
             I built this app using ReactJS, NodeJS, and Docker
           </p>
           <p>Check out my <a href="https://www.linkedin.com/in/andrew-aromin" target="_blank" rel="noopener noreferrer">
-            Linkedin</a>
+            Linkedin</a> | <a href="https://github.com/andrew-aromin/portfolio" target="_blank" rel="noopener noreferrer">
+            Github</a>
           </p>
         </div>
       </div>
